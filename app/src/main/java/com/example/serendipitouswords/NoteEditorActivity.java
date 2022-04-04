@@ -6,9 +6,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class NoteEditorActivity extends AppCompatActivity {
     int noteId;
@@ -18,10 +29,11 @@ public class NoteEditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_editor);
 
-        EditText editText = findViewById(R.id.editText);
 
         // Fetch data that is passed from MainActivity
         Intent intent = getIntent();
+
+        EditText editText = findViewById(R.id.editText);
 
         // Accessing the data using key and value
         noteId = intent.getIntExtra("noteId", -1);
@@ -56,5 +68,44 @@ public class NoteEditorActivity extends AppCompatActivity {
                 // add your code here
             }
         });
+    }
+
+    //dabar saugo visada pastoviam faile, nesvarbu koks note.
+    //persiraso vieni ant kitu notes
+    //reikia sugalvot pagal ka sudaryt failo pavadinima
+    public void save(View view){
+        File dir = new File(getFilesDir(), "notes");
+        EditText text = findViewById(R.id.editText);
+        if (!dir.exists()){
+            dir.mkdir();
+        }
+        try{
+            File note = new File(dir, "example.md");
+            FileWriter writer = new FileWriter(note);
+            writer.write(text.getText().toString());
+            writer.close();
+            Toast.makeText(this, "File saved", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //užkrauna į teksto lauką duomenis iš example.md
+    public void load(View view) {
+        File dir = new File(getFilesDir(), "notes");
+        File note = new File(dir, "example.md");
+        EditText editText = findViewById(R.id.editText);
+        Scanner sc = null;
+        try {
+            sc = new Scanner(note);
+            StringBuilder buff = new StringBuilder();
+            while(sc.hasNextLine()){
+                buff.append(sc.nextLine());
+            }
+            sc.close();
+            editText.setText(buff);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

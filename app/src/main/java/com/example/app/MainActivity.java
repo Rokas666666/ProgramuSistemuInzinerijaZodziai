@@ -1,4 +1,4 @@
-package com.example.serendipitouswords;
+package com.example.app;
 
 import android.content.Context;
 import android.content.DialogInterface;

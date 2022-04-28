@@ -18,10 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+// šitas vyksta paleidus programėlę
 public class MainActivity extends AppCompatActivity {
 
-    static ArrayList<String> notes = new ArrayList<>();
+    static ArrayList<String> notes = new ArrayList<>(); // listas note tekstui saugoti
+    static ArrayList<String> titles = new ArrayList<>();
     static ArrayAdapter arrayAdapter;
+    static ArrayAdapter arrayAdapter2;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,21 +55,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //iš shared preferences išimami note tekstai
         ListView listView = findViewById(R.id.listView);
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
         HashSet<String> set = (HashSet<String>) sharedPreferences.getStringSet("notes", null);
+        HashSet<String> set2 = (HashSet<String>) sharedPreferences.getStringSet("titles", null);
 
-        if (set == null) {
+        // jei nebuvo jokiu note sukuriamas example note, kitu atveju užkrauna notes tekstus
+        if (set == null && set2 == null) {
 
             notes.add("Example note");
+            titles.add("Example title");
         } else {
             notes = new ArrayList(set);
+            titles = new ArrayList(set2);
         }
 
         // Using custom listView Provided by Android Studio
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, notes);
+        arrayAdapter2 = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, titles);
 
         listView.setAdapter(arrayAdapter);
+        listView.setAdapter(arrayAdapter2);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -80,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // čia deletinimas, bet jis trina tik iš array listo, pagal tutorial darytas pradžioj ir nekeistas
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -94,10 +107,15 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 notes.remove(itemToDelete);
+                                titles.remove(itemToDelete);
                                 arrayAdapter.notifyDataSetChanged();
+                                arrayAdapter2.notifyDataSetChanged();
                                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
+                                SharedPreferences sharedPreferences2 = getApplicationContext().getSharedPreferences("com.example.titles", Context.MODE_PRIVATE);
                                 HashSet<String> set = new HashSet(MainActivity.notes);
+                                HashSet<String> set2 = new HashSet(MainActivity.titles);
                                 sharedPreferences.edit().putStringSet("notes", set).apply();
+                                sharedPreferences2.edit().putStringSet("titles", set2).apply();
                             }
                         }).setNegativeButton("No", null).show();
                 return true;

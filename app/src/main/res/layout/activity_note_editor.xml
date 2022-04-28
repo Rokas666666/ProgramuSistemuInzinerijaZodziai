@@ -37,13 +37,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:onClick="save"
         android:text="SAVE"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button_load"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="save"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_load"

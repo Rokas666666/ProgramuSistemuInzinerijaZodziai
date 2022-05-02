@@ -59,17 +59,26 @@ public class MainActivity extends AppCompatActivity {
         //iš shared preferences išimami note tekstai
         ListView listView = findViewById(R.id.listView);
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences2 = getApplicationContext().getSharedPreferences("com.example.titles", Context.MODE_PRIVATE);
         HashSet<String> set = (HashSet<String>) sharedPreferences.getStringSet("notes", null);
-        HashSet<String> set2 = (HashSet<String>) sharedPreferences.getStringSet("titles", null);
+        HashSet<String> set2 = (HashSet<String>) sharedPreferences2.getStringSet("titles", null);
+        System.out.println("DEBUGGING: "+ getApplicationContext().getSharedPreferences("com.example.notes", Context.MODE_PRIVATE));
 
         // jei nebuvo jokiu note sukuriamas example note, kitu atveju užkrauna notes tekstus
-        if (set == null && set2 == null) {
-
+        if (set == null) {
             notes.add("Example note");
-            titles.add("Example title");
+            System.out.println("SET(NOTES) IS NULL");
         } else {
             notes = new ArrayList(set);
+            System.out.println("SET(NOTES) IS NOT NULL");
+        }
+
+        if (set2 == null) {
+            titles.add("Example title");
+            System.out.println("SET2(TITLES) IS NULL");
+        } else {
             titles = new ArrayList(set2);
+            System.out.println("SET2(TITLES) IS NOT NULL");
         }
 
         // Using custom listView Provided by Android Studio

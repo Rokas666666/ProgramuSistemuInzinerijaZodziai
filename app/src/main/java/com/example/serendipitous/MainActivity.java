@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +25,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -46,10 +44,16 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private NotesAdapter mAdapter;
     private NoteComparators Comp = new NoteComparators();
+    private Toast sortingToast;
+    public static Boolean isDarkTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (isDarkTheme == null) isDarkTheme = false;
+        if (isDarkTheme){
+            setTheme(R.style.DarkTheme);
+        }
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.notesRecyclerView);
@@ -308,7 +312,9 @@ public class MainActivity extends AppCompatActivity
                 if (notesList.size() > 0) {
                     mAdapter.notifyDataSetChanged();
                 }
-                Toast.makeText(this, Comp.ComparatorNameList.get(sortIndex), Toast.LENGTH_SHORT).show();
+                if (sortingToast != null) sortingToast.cancel();
+                sortingToast = Toast.makeText(this, Comp.ComparatorNameList.get(sortIndex), Toast.LENGTH_SHORT);
+                sortingToast.show();
                 return true;
             case R.id.menuHelp:
                 launchAboutActivity();
@@ -316,6 +322,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.menuAddNote:
                 launchEmptyEditActivity();
                 return true;
+            case R.id.menuChangeTheme:
+                if (isDarkTheme){
+                    setTheme(R.style.AppTheme);
+                    isDarkTheme = false;
+                } else {
+                    setTheme(R.style.DarkTheme);
+                    isDarkTheme = true;
+                }
+                finish();
+                startActivity(getIntent());
             default:
                 return super.onOptionsItemSelected(item);
         }

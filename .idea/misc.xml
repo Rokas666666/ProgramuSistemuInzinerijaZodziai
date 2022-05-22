@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/drawable/ic_baseline_bedtime_24.xml" value="0.2985" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/drawable/ic_baseline_dark_24.xml" value="0.2985" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/drawable/ic_baseline_sort_24.xml" value="0.2985" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/layout/activity_about.xml" value="0.14722222222222223" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/layout/activity_edit.xml" value="0.14722222222222223" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/layout/note_list_card.xml" value="0.18802083333333333" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/menu/edit_activity_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/menu/main_activity_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/Univ/Zodziai/NotesApp/ProgramuSistemuInzinerijaZodziai/app/src/main/res/menu/popup_menu.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Rokas/Desktop/SerendipitousWords Gabija/SerendipitousWords/SerendipitousWords/app/src/main/res/drawable/ic_baseline_help_24.xml" value="0.343" />
         <entry key="..\:/Users/Rokas/Desktop/SerendipitousWords Gabija/SerendipitousWords/SerendipitousWords/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.343" />
         <entry key="..\:/Users/Rokas/Desktop/SerendipitousWords Gabija/SerendipitousWords/SerendipitousWords/app/src/main/res/drawable/ic_baseline_sort_24.xml" value="0.343" />

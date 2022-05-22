@@ -27,13 +27,13 @@ public class NoteComparators {
 
     Comparator<Note> titleOrder =  new Comparator<Note>() {
         public int compare(Note n1, Note n2) {
-            return n1.title.compareTo(n2.title);
+            return n1.title.compareToIgnoreCase(n2.title);
         }
     };
 
     Comparator<Note> reverseTitleOrder =  new Comparator<Note>() {
         public int compare(Note n1, Note n2) {
-            return n1.title.compareTo(n2.title) * -1;
+            return n1.title.compareToIgnoreCase(n2.title) * -1;
         }
     };
 

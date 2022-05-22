@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:background="?attr/colorAccent">
+    android:background="?attr/color">
 
     <TextView
         android:id="@+id/noteTitleTextView"
-        android:textColor="?attr/color"
+        android:textColor="?attr/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/dateTimeTextView"
-        android:textColor="?attr/color"
+        android:textColor="?attr/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/noteBodyTextView"
-        android:textColor="?attr/color"
+        android:textColor="?attr/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

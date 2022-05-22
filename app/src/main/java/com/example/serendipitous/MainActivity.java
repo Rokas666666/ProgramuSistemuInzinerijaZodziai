@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onResume() {
         noteCount = notesList.size();
-        setTitle(getResources().getString(R.string.app_name) + " (" + String.valueOf(noteCount) + ")");
+        setTitle("Seren");
         super.onResume();
     }
 
@@ -340,7 +340,7 @@ public class MainActivity extends AppCompatActivity
     // alert dialogs
 
     public void deleteNote(final int pos) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 removePos(pos);
